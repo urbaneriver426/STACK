@@ -22,18 +22,16 @@ class Stack:
 		else:
 			return None
 	
-	def balance(self):
-		if self.peek() != ")":
-			return "unbalanced"
+	def balance(self, string):
+		for i in range(len(string)):
+			if string[i] == "(":
+				self.push(string[i])
+			elif string[i] == ")":
+				if i == len(string)-1:
+					return "unbalanced"
+				else:
+					self.pop()
+		if self.size() == 0:
+			return "balanced"
 		else:
-			count = 0
-			for i in range(self.size()):
-				x = self.pop()
-				if x == ")":
-					count += 1
-				elif x == "(":
-					count -= 1
-			if count == 0:
-				return "balanced"
-			else:
-				return "unbalanced"
+			return "unbalanced"
