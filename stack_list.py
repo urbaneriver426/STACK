@@ -27,7 +27,7 @@ class Stack:
 			if string[i] == "(":
 				self.push(string[i])
 			elif string[i] == ")":
-				if i == len(string)-1 and self.size() == 0:
+				if self.size() == 0:
 					return "unbalanced"
 				else:
 					self.pop()
